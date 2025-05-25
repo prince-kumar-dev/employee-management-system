@@ -1,0 +1,1052 @@
+/* --- Global Reset & Basic Setup --- */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Poppins', sans-serif; /* Example Font: Add Poppins from Google Fonts */
+    /* Fallback font */
+    /* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; */
+    line-height: 1.6;
+    color: #333;
+    background-color: #f4f7f6; /* Light, slightly off-white background */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-size: 16px;
+}
+
+main {
+    flex-grow: 1; /* Ensures footer stays at the bottom */
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+a {
+    text-decoration: none;
+    color: #007bff; /* Primary color for links */
+}
+
+a:hover {
+    color: #0056b3; /* Darker primary for hover */
+    text-decoration: underline;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin-bottom: 0.75em;
+    line-height: 1.2;
+    color: #2c3e50; /* Darker shade for headings */
+}
+
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.5rem; }
+
+/* --- Utility Classes --- */
+.text-center { text-align: center; }
+.mt-1 { margin-top: 1rem; }
+.mb-1 { margin-bottom: 1rem; }
+/* Add more as needed */
+
+/* --- Buttons --- */
+.btn {
+    display: inline-block;
+    padding: 0.75em 1.5em;
+    border-radius: 25px; /* Rounded buttons */
+    font-weight: 600;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+    font-size: 0.95rem;
+}
+
+.btn-primary {
+    background-color: #007bff; /* Primary Blue */
+    color: #fff;
+    border-color: #007bff;
+}
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+    color: #fff;
+    text-decoration: none;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.btn-secondary {
+    background-color: #6c757d; /* Secondary Gray */
+    color: #fff;
+    border-color: #6c757d;
+}
+.btn-secondary:hover {
+    background-color: #545b62;
+    border-color: #545b62;
+    color: #fff;
+    text-decoration: none;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.btn-outline {
+    background-color: transparent;
+    color: #007bff;
+    border-color: #007bff;
+}
+.btn-outline:hover {
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+}
+
+.btn-danger-outline {
+    background-color: transparent;
+    color: #dc3545; /* Danger Red */
+    border-color: #dc3545;
+}
+.btn-danger-outline:hover {
+    background-color: #dc3545;
+    color: #fff;
+    text-decoration: none;
+}
+
+.btn-large {
+    padding: 1em 2em;
+    font-size: 1.1rem;
+}
+
+/* --- Header Styling --- */
+#main-header {
+    background-color: #ffffff;
+    padding: 1rem 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+#header-logo {
+    height: 40px; /* Adjust as needed */
+    margin-right: 10px;
+}
+
+.logo-text {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #2c3e50;
+}
+.logo-link:hover .logo-text {
+    color: #007bff;
+}
+
+
+#main-nav ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+#main-nav li {
+    margin-left: 25px;
+}
+
+#main-nav .nav-link {
+    color: #333;
+    font-weight: 500;
+    padding: 0.5em 0;
+    position: relative;
+    text-decoration: none;
+}
+
+#main-nav .nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -2px;
+    left: 0;
+    background-color: #007bff;
+    transition: width 0.3s ease;
+}
+
+#main-nav .nav-link:hover::after,
+#main-nav .nav-link.active::after { /* Add .active class with JS for current page */
+    width: 100%;
+}
+#main-nav .nav-link:hover {
+    color: #007bff;
+    text-decoration: none;
+}
+
+
+.header-actions {
+    display: flex;
+    align-items: center;
+}
+.header-actions .btn {
+    margin-left: 10px;
+}
+
+#user-info-header {
+    display: flex; /* Initially none, JS changes to flex */
+    align-items: center;
+}
+#username-header {
+    margin-right: 15px;
+    font-weight: 500;
+}
+
+.mobile-nav-toggle {
+    display: none; /* Hidden on larger screens */
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: #333;
+}
+
+/* --- Footer Styling --- */
+#main-footer {
+    background-color: #2c3e50; /* Dark footer */
+    color: #e0e0e0;
+    padding: 3rem 0 1.5rem;
+    margin-top: auto; /* Pushes footer to bottom if content is short */
+}
+
+.footer-container {
+    /* Container class handles width and centering */
+}
+
+.footer-top {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.footer-column {
+    flex: 1;
+    min-width: 200px; /* Ensure columns don't get too squished */
+}
+
+.footer-column h4 {
+    color: #ffffff;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    border-bottom: 1px solid #4e5d6c;
+    padding-bottom: 0.5rem;
+}
+
+.footer-column p,
+.footer-column ul {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.footer-column ul li a {
+    color: #bdc3c7;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+.footer-column ul li a:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+.newsletter-form {
+    display: flex;
+    margin-top: 0.5rem;
+}
+.newsletter-form input[type="email"] {
+    flex-grow: 1;
+    padding: 0.6em;
+    border: 1px solid #4e5d6c;
+    background-color: #34495e;
+    color: #fff;
+    border-radius: 20px 0 0 20px;
+    font-size: 0.9rem;
+}
+.newsletter-form input[type="email"]::placeholder {
+    color: #95a5a6;
+}
+.newsletter-form button {
+    padding: 0.6em 1em;
+    border-radius: 0 20px 20px 0;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+.newsletter-form button:hover {
+    background-color: #0056b3;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 1.5rem;
+    border-top: 1px solid #4e5d6c;
+    font-size: 0.85rem;
+    color: #95a5a6;
+}
+.social-media-links {
+    margin-top: 0.5rem;
+}
+.social-media-links a {
+    margin: 0 10px;
+    display: inline-block; /* Helps with alignment */
+}
+.social-media-links img {
+    width: 24px;
+    height: 24px;
+    opacity: 0.7;
+    transition: opacity 0.2s ease;
+}
+.social-media-links a:hover img {
+    opacity: 1;
+}
+
+/* --- OTP Validation ---- */
+
+/* style.css */
+/* ... existing styles ... */
+
+.otp-card {
+    /* Add any specific styling if different from general auth-card */
+    /* For example, if you want it slightly narrower or different background */
+}
+
+#otpEmailDisplay {
+    font-weight: normal; /* Or style as needed */
+}
+
+.message-area { /* Ensure this is styled well if not already */
+    padding: 0.8em;
+    margin: 1rem 0;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    text-align: center;
+}
+.message-area.error-message { /* Already defined, just ensure it's good */
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+.message-area.success-message { /* Already defined */
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+.message-area.info-message { /* Add if you use 'info' type */
+    background-color: #d1ecf1;
+    color: #0c5460;
+    border: 1px solid #bee5eb;
+}
+
+
+/* --- Home Page: Hero Section --- */
+.hero-section {
+    background: linear-gradient(to right, #e0f7fa, #b2ebf2); /* Light teal gradient */
+    /* Or use a background image:
+    background-image: url('../images/your_hero_background.jpg');
+    background-size: cover;
+    background-position: center;
+    */
+    color: #333;
+    padding: 4rem 0;
+    display: flex;
+    align-items: center;
+    min-height: 70vh;
+    padding: 10px;
+}
+.hero-section .container { /* Ensure container within hero section works well */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+}
+
+.hero-content {
+    flex: 1;
+    max-width: 55%;
+}
+.hero-content h1 {
+    font-size: 2.8rem;
+    color: #1a237e; /* Dark blue for impact */
+    margin-bottom: 1rem;
+}
+.hero-content .tagline {
+    font-size: 1.3rem;
+    color: #004d40; /* Darker teal */
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+}
+.hero-content p:not(.tagline) {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+    color: #37474f;
+}
+.hero-actions .btn {
+    margin-right: 1rem;
+}
+
+.hero-image {
+    flex: 1;
+    max-width: 40%;
+    text-align: center; /* If image is smaller than container */
+}
+.hero-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    /* box-shadow: 0 10px 25px rgba(0,0,0,0.1); */
+}
+
+
+/* --- Home Page: Features Section --- */
+.features-section {
+    padding: 4rem 0;
+    background-color: #ffffff;
+}
+.features-section h2 {
+    text-align: center;
+    margin-bottom: 3rem;
+    color: #1a237e;
+}
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin: 0.5rem;
+}
+.feature-item {
+    background-color: #f8f9fa;
+    padding: 1rem;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.feature-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+}
+.feature-icon {
+    width: 60px; /* Adjust based on your icon size */
+    height: 60px;
+    margin-bottom: 1.5rem;
+    /* Add styling for SVG icons if needed, e.g., fill color */
+}
+.feature-item h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.75rem;
+    color: #007bff;
+}
+.feature-item p {
+    font-size: 0.95rem;
+    color: #555;
+}
+
+
+/* --- Home Page: Call to Action Section --- */
+.call-to-action-section {
+    background-color: #007bff; /* Primary color */
+    color: #fff;
+    padding: 4rem 0;
+    text-align: center;
+}
+.call-to-action-section h2 {
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+    color: #fff;
+}
+.call-to-action-section p {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.call-to-action-section .btn-primary { /* Make it stand out if it's on primary bg */
+    background-color: #fff;
+    color: #007bff;
+    border-color: #fff;
+}
+.call-to-action-section .btn-primary:hover {
+    background-color: #e9ecef;
+    color: #0056b3;
+}
+
+
+/* --- Login/Register Page Styling --- */
+.auth-page-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem 0; /* Add padding for spacing */
+    flex-grow: 1; /* Ensure it takes available space if content is short */
+     /* Example subtle background pattern for auth pages */
+    /* background-image: url("data:image/svg+xml,%3Csvg width='52' height='26' viewBox='0 0 52 26' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23c7d6e0' fill-opacity='0.4'%3E%3Cpath d='M10 10c0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6h2c0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4v2c-3.314 0-6-2.686-6-6 0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6zm25.464-1.95l8.486 8.486-1.414 1.414-8.486-8.486 1.414-1.414z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); */
+}
+
+.auth-card {
+    background-color: #fff;
+    padding: 2.5rem 2rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 450px; /* Max width for the card */
+}
+.auth-card.register-card {
+    max-width: 600px; /* Register card can be wider */
+}
+
+.auth-card-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+.auth-card-header .logo-placeholder { /* If you have a logo inside the card */
+    max-width: 120px;
+    margin: 0 auto 1rem;
+}
+.auth-card-header h2 {
+    font-size: 1.8rem;
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+}
+.auth-card-header p {
+    color: #555;
+    font-size: 0.95rem;
+}
+
+.auth-form .form-row {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+}
+.auth-form .form-row .form-group {
+    flex: 1;
+    min-width: calc(50% - 0.5rem); /* For two columns */
+}
+
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #495057;
+    font-size: 0.9rem;
+}
+.form-group label .icon-placeholder {
+    margin-right: 0.3em;
+    /* Style your actual icons here */
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"],
+.form-group input[type="date"],
+.form-group input[type="number"],
+.form-group select {
+    width: 100%;
+    padding: 0.8em 1em;
+    border: 1px solid #ced4da;
+    border-radius: 20px; /* Rounded inputs */
+    font-size: 0.95rem;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.form-actions {
+    margin-top: 2rem;
+}
+.form-actions .btn-login,
+.form-actions .btn-register {
+    width: 100%;
+    padding: 0.9em;
+    font-size: 1rem;
+}
+
+.auth-card-footer {
+    text-align: center;
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+}
+.auth-card-footer p {
+    margin-bottom: 0.5rem;
+    color: #555;
+}
+.auth-card-footer a {
+    font-weight: 600;
+}
+
+
+/* Error and Success Messages */
+.error-message, .success-message {
+    padding: 0.8em;
+    margin: 1rem 0;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    text-align: center;
+}
+.error-message {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+.success-message {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+
+/* --- Dashboard Related (Very Basic Placeholders) --- */
+.dashboard-container {
+    padding: 2rem 0;
+}
+.dashboard-header h1 {
+    margin-bottom: 1.5rem;
+}
+.dashboard-widgets {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+.widget {
+    background-color: #fff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+.widget h3 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    color: #007bff;
+    font-size: 1.2rem;
+}
+.widget p {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 0;
+    color: #333;
+}
+.charts-container {
+    background-color: #fff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+/* In style.css */
+.chart-container-wrapper {
+    display: grid;
+    /* Adjust to fit more charts, e.g., 3 columns on wider screens */
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 1.5rem;
+}
+
+.chart-card.full-width-chart {
+    /* Example if your grid is 2 columns and you want this to span both */
+    /* grid-column: span 2;  */
+    /* Or if your grid is auto-fit, this class might just be for different height or other specific styles */
+}
+
+.widget-icon { /* Ensure styling if not already present */
+    width: 40px;
+    height: 40px;
+    margin-bottom: 0.5rem;
+    opacity: 0.7;
+}
+
+/* --- About and Services Pages (Generic Styling) --- */
+.page-header {
+    background-color: #e9ecef;
+    padding: 3rem 0;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+.page-header h1 {
+    color: #1a237e;
+}
+.content-section {
+    padding: 2rem 0;
+    background-color: #fff;
+    margin-bottom: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+.content-section .container {
+    padding: 1rem 1.5rem; /* Inner padding for content */
+}
+.content-section h2 {
+    color: #007bff;
+    margin-bottom: 1rem;
+}
+.content-section p {
+    margin-bottom: 1rem;
+    line-height: 1.7;
+}
+.content-section ul {
+    list-style: disc;
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+/* --- Manage Departments/Employees Page Specific Styles --- */
+.page-header-alt {
+    padding: 1.5rem 0;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #e0e0e0;
+}
+.page-header-alt h1 {
+    font-size: 1.8rem;
+    margin-bottom: 0.25rem;
+}
+.page-header-alt p {
+    font-size: 1rem;
+    color: #555;
+}
+
+.card-style { /* Common styling for form and list sections */
+    background-color: #fff;
+    padding: 1.5rem 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.07);
+    margin-bottom: 2rem;
+}
+.card-style h2 {
+    font-size: 1.4rem;
+    margin-bottom: 1.5rem;
+    color: #007bff;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 0.5rem;
+}
+
+.form-section .form-group {
+    margin-bottom: 1rem; /* Slightly less margin for these forms */
+}
+.form-section .form-actions button {
+    margin-right: 0.5rem;
+}
+
+.message-area { /* For form or list messages */
+    margin-top: 1rem;
+    font-size: 0.9rem;
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+.data-table th,
+.data-table td {
+    border: 1px solid #ddd;
+    padding: 0.75em 1em;
+    text-align: left;
+    vertical-align: middle;
+}
+.data-table th {
+    background-color: #f8f9fa;
+    font-weight: 600;
+    color: #333;
+}
+.data-table tbody tr:nth-child(even) {
+    background-color: #fdfdfd;
+}
+.data-table tbody tr:hover {
+    background-color: #f1f1f1;
+}
+.data-table .actions-cell button {
+    margin-right: 5px;
+    padding: 0.3em 0.6em; /* Smaller buttons for table actions */
+    font-size: 0.85rem;
+}
+.btn-edit {
+    background-color: #ffc107; /* Yellow for edit */
+    color: #212529;
+    border-color: #ffc107;
+}
+.btn-edit:hover {
+    background-color: #e0a800;
+    border-color: #d39e00;
+    color: #212529;
+}
+.btn-delete {
+    background-color: #dc3545; /* Red for delete */
+    color: #fff;
+    border-color: #dc3545;
+}
+.btn-delete:hover {
+    background-color: #c82333;
+    border-color: #bd2130;
+    color: #fff;
+}
+
+.form-text.text-muted {
+    font-size: 0.8em;
+    color: #6c757d; /* Secondary text color */
+    display: block;
+    margin-top: 0.25rem;
+}
+
+#loadingDepartmentsMsg {
+    padding: 1rem;
+    text-align: center;
+    color: #555;
+}
+
+/* --- Loader ---- */
+.loader-overlay {
+    position: fixed; /* Cover the whole screen */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.7); /* Semi-transparent white background */
+    display: flex; /* For centering content */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; /* Ensure it's on top of everything */
+    backdrop-filter: blur(2px); /* Optional: Frosted glass effect */
+    -webkit-backdrop-filter: blur(2px); /* For Safari */
+}
+
+.loader-spinner {
+    border: 6px solid #f3f3f3; /* Light grey */
+    border-top: 6px solid #007bff; /* Blue (your primary color) */
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+}
+
+.loader-text {
+    margin-top: 15px;
+    font-size: 1.1em;
+    color: #333;
+    font-weight: 500;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+
+/* --- Leave Request ----- */
+
+.status-badge {
+    padding: 0.3em 0.6em;
+    font-size: 0.8rem;
+    font-weight: bold;
+    border-radius: 10px;
+    color: #fff;
+    text-transform: uppercase;
+    min-width: 80px; /* Ensure consistent width */
+    text-align: center;
+    display: inline-block;
+}
+
+.status-PENDING {
+    background-color: #ffc107; /* Yellow */
+    color: #333;
+}
+.status-APPROVED {
+    background-color: #28a745; /* Green */
+}
+.status-REJECTED {
+    background-color: #dc3545; /* Red */
+}
+.status-CANCELLED {
+    background-color: #6c757d; /* Grey */
+}
+
+.leave-details-modal { /* If you decide to use modals later */
+    /* Styles for a modal */
+}
+
+.leave-actions button {
+    margin-left: 5px;
+}
+
+/* Style for filter/tabs on admin manage leaves page */
+.leave-filters {
+    margin-bottom: 1.5rem;
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+.leave-filters .btn { /* Style filter buttons */
+    font-size: 0.9rem;
+}
+.leave-filters .btn.active { /* Style active filter button */
+    background-color: #0056b3; /* Darker primary */
+    color: #fff;
+    border-color: #0056b3;
+}
+
+/* Basic Modal Styles */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1050; /* Ensure it's above other content */
+}
+.modal-content {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    width: 90%;
+    max-width: 500px; /* Or your preferred width */
+    position: relative;
+}
+.modal-content h3 {
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+}
+.modal-content .form-actions {
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: flex-end; /* Align buttons to the right */
+}
+.modal-content .form-actions button {
+    margin-left: 0.5rem;
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 992px) {
+    .hero-section .container {
+        flex-direction: column;
+        text-align: center;
+    }
+    .hero-content, .hero-image {
+        max-width: 100%;
+    }
+    .hero-image {
+        margin-top: 2rem;
+    }
+
+    .footer-top {
+        flex-direction: column;
+        text-align: center;
+    }
+    .footer-column {
+        min-width: 100%; /* Stack footer columns */
+    }
+}
+
+@media (max-width: 768px) {
+    .header-container {
+        position: relative; /* For mobile nav positioning */
+    }
+    #main-nav {
+        display: none; /* Hide nav by default on mobile */
+        position: absolute;
+        top: 100%; /* Position below header */
+        left: 0;
+        width: 100%;
+        background-color: #ffffff;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+        flex-direction: column;
+        padding: 1rem 0;
+    }
+    #main-nav.active {
+        display: flex; /* Show when active class is added by JS */
+    }
+    #main-nav ul {
+        flex-direction: column;
+        width: 100%;
+    }
+    #main-nav li {
+        margin-left: 0;
+        text-align: center;
+        width: 100%;
+    }
+    #main-nav .nav-link {
+        display: block;
+        padding: 1em;
+        border-bottom: 1px solid #eee;
+    }
+    #main-nav .nav-link::after { /* Mobile nav link underline */
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 5px;
+    }
+    .header-actions {
+        /* Adjust if they overlap with mobile toggle or wrap them with nav */
+        /* For simplicity, they might be hidden or part of the toggled menu too */
+    }
+    .mobile-nav-toggle {
+        display: block; /* Show hamburger icon */
+    }
+
+    .auth-form .form-row {
+        flex-direction: column;
+    }
+    .auth-form .form-row .form-group {
+        min-width: 100%;
+    }
+
+    .features-grid {
+        grid-template-columns: 1fr; /* Stack features on mobile */
+    }
+
+    h1 { font-size: 2rem; }
+    h2 { font-size: 1.7rem; }
+}

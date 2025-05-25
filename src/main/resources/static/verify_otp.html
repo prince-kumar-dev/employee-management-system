@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verify OTP - Employee Management System</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Favicon -->
+</head>
+<body>
+
+<div id="globalLoader" class="loader-overlay" style="display: none;">
+    <div class="loader-spinner"></div>
+    <p class="loader-text">Processing...</p>
+</div>
+
+<header id="main-header">
+    <!-- Header content will be loaded by js/common.js -->
+</header>
+
+<main class="auth-page-container">
+    <div class="auth-card otp-card" id="otpVerificationCard"> <!-- Main card for this page -->
+        <div class="auth-card-header">
+            <h2>📧 Verify Your Email</h2>
+            <p>An OTP has been sent to <strong id="otpEmailDisplay">your email address</strong>. Please enter it below.</p>
+            <p id="otpPageInstructions" style="font-size: 0.9em; color: #555;">If you don't see it, please check your spam folder.</p>
+        </div>
+        <form id="otpForm" class="auth-form">
+            <!-- Hidden input to store email, will be populated by JS from URL param -->
+            <input type="hidden" id="otpVerificationEmail" name="otpVerificationEmail">
+
+            <div class="form-group">
+                <label for="otp">🔑 One-Time Password (OTP)</label>
+                <input type="text" id="otp" name="otp" placeholder="Enter 6-digit OTP" required maxlength="6" pattern="\d{6}" autocomplete="one-time-code">
+            </div>
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">Verify OTP</button>
+            </div>
+            <div id="otpMessage" class="message-area" style="display: none;"></div>
+        </form>
+        <div class="auth-card-footer">
+            <p>Didn't receive OTP? <a href="#" id="resendOtpLink">Resend OTP</a></p>
+            <p><a href="login.html">Back to Log in</a> | <a href="register.html">Register Again</a></p>
+        </div>
+    </div>
+</main>
+
+<footer id="main-footer">
+    <!-- Footer content will be loaded by js/common.js -->
+</footer>
+
+<script src="js/common.js"></script> <!-- common.js first -->
+<script src="js/auth.js"></script>   <!-- auth.js will handle this page too -->
+</body>
+</html>

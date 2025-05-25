@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Employee Management System</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Favicon -->
+</head>
+<body>
+
+<div id="globalLoader" class="loader-overlay" style="display: none;">
+    <div class="loader-spinner"></div>
+    <p class="loader-text">Processing...</p>
+</div>
+
+
+<header id="main-header">
+    <!-- Header content will be loaded by js/common.js -->
+</header>
+
+<main class="auth-page-container">
+    <div class="auth-card register-card" id="registrationCard">
+        <div class="auth-card-header">
+            <h2>Create Your Account</h2>
+            <p>Join our platform to manage your workforce effectively.</p>
+        </div>
+
+        <form id="registerForm" class="auth-form">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="firstName">
+                        <span class="icon-placeholder" title="First Name">👤</span> First Name
+                    </label>
+                    <input type="text" id="firstName" name="firstName" placeholder="John" required>
+                </div>
+                <div class="form-group">
+                    <label for="lastName">
+                        <span class="icon-placeholder" title="Last Name">👤</span> Last Name
+                    </label>
+                    <input type="text" id="lastName" name="lastName" placeholder="Doe" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="email">
+                    <span class="icon-placeholder" title="Email">📧</span> Email Address
+                </label>
+                <input type="email" id="email" name="email" placeholder="yourname@example.com" required>
+            </div>
+
+            <div class="form-group">
+                <label for="password">
+                    <span class="icon-placeholder" title="Password">🔒</span> Password
+                </label>
+                <input type="password" id="password" name="password" placeholder="Choose a strong password" required>
+            </div>
+
+            <div class="form-group">
+                <label for="gender">
+                    <span class="icon-placeholder" title="Gender">🚻</span> Gender
+                </label>
+                <select id="gender" name="gender" required>
+                    <option value="" selected>Select your gender</option>
+                    <option value="MALE">Male</option>
+                    <option value="FEMALE">Female</option>
+                    <option value="OTHER">Other</option>
+                    <option value="PREFER_NOT_TO_SAY">Prefer not to say</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="role">
+                    <span class="icon-placeholder" title="Role">👑</span> Register As
+                </label>
+                <select id="role" name="role" required>
+                    <option value="" disabled selected>Select your role</option>
+                    <option value="EMPLOYEE">Employee</option>
+                    <option value="ADMIN">Admin</option>
+                </select>
+            </div>
+
+            <!-- Fields specific to EMPLOYEE role, shown/hidden by JavaScript -->
+            <div id="employeeSpecificFields" style="display: none;">
+                <h4>Employee Details</h4> <!-- Added a sub-heading -->
+
+                <div class="form-group" id="adminSelectionGroup">
+                    <label for="managedByAdminId">
+                        <span class="icon-placeholder" title="Select Manager">🧑‍💼</span> Select Your Manager/Admin
+                    </label>
+                    <select id="managedByAdminId" name="managedByAdminId" required> <!-- Make it required for employees -->
+                        <option value="" disabled selected>Loading managers...</option>
+                        <!-- Admins will be populated by JavaScript -->
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="dateOfBirth">
+                        <span class="icon-placeholder" title="Date of Birth">🎂</span> Date of Birth
+                    </label>
+                    <input type="date" id="dateOfBirth" name="dateOfBirth" required>
+                </div>
+                <div class="form-group">
+                    <label for="hireDate">
+                        <span class="icon-placeholder" title="Hire Date">📅</span> Hire Date
+                    </label>
+                    <input type="date" id="hireDate" name="hireDate" required>
+                </div>
+                <div class="form-group">
+                    <label for="salary">
+                        <span class="icon-placeholder" title="Salary">💰</span> Salary
+                    </label>
+                    <input type="number" id="salary" name="salary" placeholder="e.g., 50000" step="0.01" required>
+                </div>
+                <div class="form-group">
+                    <label for="departmentId">
+                        <span class="icon-placeholder" title="Department">🏢</span> Department
+                    </label>
+                    <select id="departmentId" name="departmentId" required>
+                        <option value="" disabled selected>Select department</option>
+                        <!-- Departments will be populated by JavaScript -->
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary btn-register">Create Account</button>
+            </div>
+            <div id="registerMessage" class="message-area" style="display: none;"></div>
+        </form>
+
+        <div class="auth-card-footer">
+            <p>Already have an account? <a href="login.html">Sign In</a></p>
+        </div>
+    </div>
+</main>
+
+<footer id="main-footer">
+    <!-- Footer content will be loaded by js/common.js -->
+</footer>
+
+<script src="js/common.js"></script>
+<script src="js/auth.js"></script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Leave Requests - EMS</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<header id="main-header"></header>
+
+<main>
+    <div class="dashboard-container container">
+        <div class="page-header-alt">
+            <h1>My Leave Requests</h1>
+            <p>View the status of your submitted leave applications.</p>
+            <a href="dashboard_employee.html" class="btn btn-outline btn-sm" style="margin-top: 1rem;">← Back to Dashboard</a>
+        </div>
+
+        <section class="data-list-section card-style">
+            <h2>Request History</h2>
+            <div id="myLeaveListContainer">
+                <p id="loadingMyLeavesMsg">Loading your leave requests...</p>
+                <table id="myLeavesTable" class="data-table" style="display:none;">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                        <th>Reason</th>
+                        <th>Status</th>
+                        <th>Submitted On</th>
+                        <th>Admin Remarks</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody id="myLeavesTableBody">
+                    <!-- Rows populated by JS -->
+                    </tbody>
+                </table>
+            </div>
+            <div id="myLeaveListMessage" class="message-area" style="display:none;"></div>
+        </section>
+    </div>
+</main>
+
+<footer id="main-footer"></footer>
+<div id="globalLoader" class="loader-overlay" style="display: none;"><div class="loader-spinner"></div><p class="loader-text">Processing...</p></div>
+<script src="js/common.js"></script>
+<script src="js/leave_employee.js"></script>
+</body>
+</html>

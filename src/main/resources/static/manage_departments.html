@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Departments - Admin Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Link to Google Fonts (e.g., Poppins) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Placeholder: Favicon link <link rel="icon" href="images/favicon.ico" type="image/x-icon"> -->
+</head>
+<body>
+
+<div id="globalLoader" class="loader-overlay" style="display: none;">
+    <div class="loader-spinner"></div>
+    <p class="loader-text">Processing...</p>
+</div>
+
+
+<header id="main-header">
+    <!-- Header content will be loaded by js/common.js -->
+</header>
+
+<main>
+    <div class="dashboard-container container"> <!-- Reusing dashboard-container for consistent padding -->
+        <div class="page-header-alt"> <!-- Slightly different styling for sub-page headers -->
+            <h1>Manage Departments</h1>
+            <p>Add, view, edit, and delete company departments.</p>
+            <a href="dashboard_admin.html" class="btn btn-outline btn-sm" style="margin-top: 1rem;">← Back to Admin Dashboard</a>
+        </div>
+
+        <!-- Add/Edit Department Form Section -->
+        <section class="form-section card-style">
+            <h2 id="formTitle">Add New Department</h2>
+            <form id="departmentForm">
+                <input type="hidden" id="departmentId" name="departmentId"> <!-- For editing -->
+                <div class="form-group">
+                    <label for="departmentName">Department Name:</label>
+                    <input type="text" id="departmentName" name="departmentName" required placeholder="e.g., Engineering, Marketing">
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary" id="saveDepartmentBtn">Save Department</button>
+                    <button type="button" class="btn btn-secondary" id="cancelEditBtn" style="display:none;">Cancel Edit</button>
+                </div>
+                <div id="departmentFormMessage" class="message-area" style="display:none;"></div>
+            </form>
+        </section>
+
+        <!-- Departments List Section -->
+        <section class="data-list-section card-style">
+            <h2>Existing Departments</h2>
+            <div id="departmentListContainer">
+                <p id="loadingDepartmentsMsg">Loading departments...</p>
+                <table id="departmentsTable" class="data-table" style="display:none;">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Department Name</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody id="departmentsTableBody">
+                    <!-- Department rows will be populated by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+            <div id="departmentListMessage" class="message-area" style="display:none;"></div>
+        </section>
+    </div>
+</main>
+
+<footer id="main-footer">
+    <!-- Footer content will be loaded by js/common.js -->
+</footer>
+
+<script src="js/common.js"></script>
+<script src="js/manage_departments.js"></script>
+</body>
+</html>

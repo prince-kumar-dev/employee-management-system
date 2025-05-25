@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apply for Leave - EMS</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<header id="main-header"></header>
+
+<main>
+    <div class="dashboard-container container">
+        <div class="page-header-alt">
+            <h1>Apply for Leave</h1>
+            <p>Submit your leave request for approval.</p>
+            <a href="dashboard_employee.html" class="btn btn-outline btn-sm" style="margin-top: 1rem;">← Back to Dashboard</a>
+        </div>
+
+        <section class="form-section card-style">
+            <h2 id="leaveFormTitle">New Leave Request</h2>
+            <form id="applyLeaveForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="leaveStartDate">Start Date:</label>
+                        <input type="date" id="leaveStartDate" name="startDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="leaveEndDate">End Date:</label>
+                        <input type="date" id="leaveEndDate" name="endDate" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="leaveReason">Reason for Leave:</label>
+                    <textarea id="leaveReason" name="reason" rows="4" placeholder="Please provide a reason for your leave (optional)"></textarea>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">Submit Request</button>
+                </div>
+                <div id="leaveFormMessage" class="message-area" style="display:none;"></div>
+            </form>
+        </section>
+    </div>
+</main>
+
+<footer id="main-footer"></footer>
+<div id="globalLoader" class="loader-overlay" style="display: none;"><div class="loader-spinner"></div><p class="loader-text">Processing...</p></div>
+<script src="js/common.js"></script>
+<script src="js/leave_employee.js"></script>
+</body>
+</html>

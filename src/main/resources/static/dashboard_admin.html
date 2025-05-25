@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Employee Management System</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<div id="globalLoader" class="loader-overlay" style="display: none;">
+    <div class="loader-spinner"></div>
+    <p class="loader-text">Processing...</p>
+</div>
+
+<header id="main-header"></header>
+
+<main>
+    <div class="dashboard-container container">
+        <div class="dashboard-header">
+            <h1>Admin Dashboard</h1>
+            <p>Overview of the Employee Management System.</p>
+        </div>
+
+        <section class="dashboard-widgets">
+            <div class="widget">
+                <img src="images/icon_total_employees_widget.png" alt="Total Employees" class="widget-icon">
+                <h3>Total Employees</h3>
+                <p id="totalEmployeesStat">-</p>
+            </div>
+            <div class="widget">
+                <img src="images/icon_total_departments_widget.png" alt="Total Departments" class="widget-icon">
+                <h3>Total Departments</h3>
+                <p id="totalDepartmentsStat">-</p>
+            </div>
+            <div class="widget">
+                <img src="images/icon_avg_age_widget.png" alt="Average Employee Age" class="widget-icon">
+                <h3>Average Employee Age</h3>
+                <p id="averageAgeStat">- years</p>
+            </div>
+        </section>
+
+        <section class="charts-section">
+            <div class="chart-container-wrapper">
+                <div class="chart-card">
+                    <h3>Employee Count by Role</h3>
+                    <div class="chart-placeholder">
+                        <p>Loading chart...</p>
+                        <canvas id="employeeRoleChart"></canvas>
+                    </div>
+                </div>
+                <div class="chart-card">
+                    <h3>Average Salary per Department</h3>
+                    <div class="chart-placeholder">
+                        <p>Loading chart...</p>
+                        <canvas id="avgSalaryChart"></canvas>
+                    </div>
+                </div>
+                <!-- NEW CHART PLACEHOLDERS START -->
+                <div class="chart-card">
+                    <h3>Employee Count by Department</h3>
+                    <div class="chart-placeholder">
+                        <p>Loading chart...</p>
+                        <canvas id="employeeDeptCountChart"></canvas>
+                    </div>
+                </div>
+                <div class="chart-card">
+                    <h3>Employee Gender Distribution</h3>
+                    <div class="chart-placeholder">
+                        <p>Loading chart...</p>
+                        <canvas id="employeeGenderChart"></canvas>
+                    </div>
+                </div>
+                <div class="chart-card full-width-chart"> <!-- Added class for potential wider chart -->
+                    <h3>Employee Age Group Distribution</h3>
+                    <div class="chart-placeholder">
+                        <p>Loading chart...</p>
+                        <canvas id="employeeAgeGroupChart"></canvas>
+                    </div>
+                </div>
+                <!-- NEW CHART PLACEHOLDERS END -->
+            </div>
+        </section>
+
+        <section class="admin-actions-tables">
+            <h2>Quick Management</h2>
+            <div class="admin-quick-links">
+                <a href="manage_employees.html" class="btn btn-primary">Manage Employees</a>
+                <a href="manage_departments.html" class="btn btn-primary">Manage Departments</a>
+                <a href="manage_leaves.html" class="btn btn-primary">Manage Leave Requests</a>
+            </div>
+        </section>
+    </div>
+</main>
+
+<footer id="main-footer"></footer>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="js/common.js"></script>
+<script src="js/dashboard_admin.js"></script>
+</body>
+</html>

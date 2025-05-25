@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Dashboard - Employee Management System</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Link to Google Fonts (e.g., Poppins) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Placeholder: Favicon link <link rel="icon" href="images/favicon.ico" type="image/x-icon"> -->
+</head>
+<body>
+<div id="globalLoader" class="loader-overlay" style="display: none;">
+    <div class="loader-spinner"></div>
+    <p class="loader-text">Processing...</p>
+</div>
+
+<header id="main-header">
+    <!-- Header content will be loaded by js/common.js -->
+</header>
+
+<main>
+    <div class="dashboard-container container">
+        <div class="dashboard-header">
+            <h1>Welcome, <span id="employeeName">-</span>!</h1>
+            <p>This is your personal Employee Dashboard.</p>
+        </div>
+
+        <section class="employee-info-section">
+            <h2 style="margin-top: 10px;">Your Information</h2>
+            <div class="info-card">
+                <img src="images/icon_profile_placeholder.png" alt="Profile Icon" class="widget-icon" style="width:50px; height:50px; margin-bottom:1rem;">
+                <p><strong>Email:</strong> <span id="employeeEmail">-</span></p>
+                <p><strong>Department:</strong> <span id="employeeDepartment">-</span></p>
+                <p><strong>Role:</strong> <span id="employeeRole">-</span></p>
+                <p><strong>Hire Date:</strong> <span id="employeeHireDate">-</span></p>
+                <p><strong>Date of Birth:</strong> <span id="employeeDateOfBirth">-</span></p>
+                <p><strong>Salary: ₹</strong> <span id="employeeSalary">-</span></p>
+            </div>
+        </section>
+
+        <section class="quick-links-section">
+            <h2 style="margin-top: 10px;">Quick Links</h2>
+            <div class="employee-quick-links">
+                <a href="about.html" class="btn btn-primary">About the Company</a>
+                <a href="services.html" class="btn btn-primary">Company Services</a>
+                <a href="apply_leave.html" class="btn btn-primary">Apply for Leave</a>
+                <a href="my_leaves.html" class="btn btn-primary">My Leave Requests</a>
+            </div>
+        </section>
+
+        <section class="announcements-section" style="display: none;"> <!-- Initially hidden, show if there are announcements -->
+            <h2>Announcements</h2>
+            <div id="announcementsList" class="announcements-list">
+                <!-- Announcements will be loaded here by JS if implemented -->
+                <p>No current announcements.</p>
+            </div>
+        </section>
+
+    </div>
+</main>
+
+<footer id="main-footer">
+    <!-- Footer content will be loaded by js/common.js -->
+</footer>
+
+<script src="js/common.js"></script>
+<script src="js/dashboard_employee.js"></script>
+</body>
+</html>

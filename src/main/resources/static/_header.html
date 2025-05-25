@@ -1,0 +1,30 @@
+<div class="container header-container">
+    <a href="index.html" class="logo-link">
+        <!-- [Placeholder: Company Logo - a sleek, modern abstract mark or wordmark. Approx 120x40px or similar] -->
+        <img src="images/logo_placeholder.png" alt="EMS Logo" id="header-logo">
+        <span class="logo-text">TEAM-CONNECT</span>
+    </a>
+    <nav id="main-nav">
+        <ul>
+            <li><a href="index.html" class="nav-link">Home</a></li>
+            <li><a href="about.html" class="nav-link">About</a></li>
+            <li><a href="services.html" class="nav-link">Services</a></li>
+            <!-- Dashboard link will be added by JS if user is logged in -->
+            <li id="dashboard-link-container" style="display:none;"><a href="#" id="dashboard-link" class="nav-link">Dashboard</a></li>
+        </ul>
+    </nav>
+    <div class="header-actions">
+        <!-- These will be shown if user is NOT logged in -->
+        <a href="login.html" class="btn btn-outline" id="login-btn-header">Login</a>
+        <a href="register.html" class="btn btn-primary" id="register-btn-header">Sign Up</a>
+        <!-- This will be shown if user IS logged in -->
+        <div id="user-info-header" style="display:none;">
+            <span id="username-header"></span>
+            <button id="logout-btn-header" class="btn btn-danger-outline">Logout</button>
+        </div>
+    </div>
+    <button class="mobile-nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <!-- [Placeholder: Hamburger Icon for mobile nav. SVG or font icon] -->
+        <span>☰</span> <!-- Basic hamburger entity -->
+    </button>
+</div>

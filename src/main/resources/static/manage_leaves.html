@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Leave Requests - Admin</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<header id="main-header"></header>
+
+<main>
+    <div class="dashboard-container container">
+        <div class="page-header-alt">
+            <h1>Manage Leave Requests</h1>
+            <p>Review, approve, or reject employee leave applications.</p>
+            <a href="dashboard_admin.html" class="btn btn-outline btn-sm" style="margin-top: 1rem;">← Back to Admin Dashboard</a>
+        </div>
+
+        <section class="data-list-section card-style">
+            <h2>All Leave Requests</h2>
+            <div class="leave-filters">
+                <button class="btn btn-sm btn-outline active" data-status="">All</button>
+                <button class="btn btn-sm btn-outline" data-status="PENDING">Pending</button>
+                <button class="btn btn-sm btn-outline" data-status="APPROVED">Approved</button>
+                <button class="btn btn-sm btn-outline" data-status="REJECTED">Rejected</button>
+                <button class="btn btn-sm btn-outline" data-status="CANCELLED">Cancelled</button>
+            </div>
+
+            <div id="allLeaveListContainer">
+                <p id="loadingAllLeavesMsg">Loading leave requests...</p>
+                <table id="allLeavesTable" class="data-table" style="display:none;">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Employee</th>
+                        <th>Email</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                        <th>Reason</th>
+                        <th>Status</th>
+                        <th>Submitted</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody id="allLeavesTableBody"></tbody>
+                </table>
+            </div>
+            <div id="allLeaveListMessage" class="message-area" style="display:none;"></div>
+        </section>
+
+        <!-- Modal for Admin Action (Approve/Reject) - Initially hidden -->
+        <div id="leaveActionModal" class="modal-overlay" style="display:none;">
+            <div class="modal-content card-style" style="max-width: 500px;">
+                <h3 id="modalTitle">Action Leave Request</h3>
+                <form id="leaveActionForm">
+                    <input type="hidden" id="actionLeaveId">
+                    <p><strong>Employee:</strong> <span id="modalEmployeeName"></span></p>
+                    <p><strong>Dates:</strong> <span id="modalLeaveDates"></span></p>
+                    <p><strong>Reason:</strong> <span id="modalLeaveReason"></span></p>
+
+                    <div class="form-group">
+                        <label for="adminRemarks">Admin Remarks (Optional):</label>
+                        <textarea id="adminRemarks" name="adminRemarks" rows="3"></textarea>
+                    </div>
+                    <div class="form-actions leave-actions">
+                        <button type="button" class="btn btn-success" id="approveLeaveBtn">Approve</button>
+                        <button type="button" class="btn btn-danger" id="rejectLeaveBtn">Reject</button>
+                        <button type="button" class="btn btn-secondary" id="cancelModalBtn">Cancel</button>
+                    </div>
+                    <div id="leaveActionMessage" class="message-area" style="display:none;"></div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</main>
+
+<footer id="main-footer"></footer>
+<div id="globalLoader" class="loader-overlay" style="display: none;"><div class="loader-spinner"></div><p class="loader-text">Processing...</p></div>
+<script src="js/common.js"></script>
+<script src="js/manage_leaves.js"></script>
+</body>
+</html>

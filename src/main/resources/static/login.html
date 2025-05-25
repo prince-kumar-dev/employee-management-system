@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Employee Management System</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Example Google Fonts: <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet"> -->
+    <!-- Placeholder: Favicon link <link rel="icon" href="images/favicon.ico" type="image/x-icon"> -->
+</head>
+<body>
+
+<div id="globalLoader" class="loader-overlay" style="display: none;">
+    <div class="loader-spinner"></div>
+    <p class="loader-text">Processing...</p>
+</div>
+
+
+<header id="main-header">
+    <!-- Header content will be loaded by js/common.js -->
+</header>
+
+<main class="auth-page-container">
+    <div class="auth-card">
+        <div class="auth-card-header">
+            <!-- [Placeholder: Company Logo - same as used in header, e.g., a sleek, modern abstract mark or wordmark, approx 150x50px. If logo is already in main header, this might be redundant or styled differently. ] -->
+            <!-- For consistency, if the main header (loaded by common.js) already shows the logo, you might omit this one or just have text. -->
+            <!-- <img src="images/logo_placeholder.png" alt="Company Logo" class="logo-placeholder"> -->
+            <h2>Welcome Back!</h2>
+            <p>Sign in to access your Employee Dashboard.</p>
+        </div>
+
+        <form id="loginForm" class="auth-form">
+            <div class="form-group">
+                <label for="email">
+                    <!-- [Placeholder: Email Icon - small, inline with label or input field. e.g., an SVG or font icon] -->
+                    <span class="icon-placeholder">📧</span> Email Address
+                </label>
+                <input type="email" id="email" name="email" placeholder="e.g., yourname@example.com" required>
+            </div>
+
+            <div class="form-group">
+                <label for="password">
+                    <!-- [Placeholder: Password/Lock Icon - small, inline with label or input field. e.g., an SVG or font icon] -->
+                    <span class="icon-placeholder">🔒</span> Password
+                </label>
+                <input type="password" id="password" name="password" placeholder="Enter your password" required>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary btn-login">Login</button>
+            </div>
+
+            <div id="errorMessage" class="error-message" style="display: none;">
+                <!-- Error messages will be shown here by JavaScript -->
+            </div>
+        </form>
+
+        <div class="auth-card-footer">
+            <p>Don't have an account? <a href="register.html">Sign Up Now</a></p>
+            <!-- Optional: <p><a href="#">Forgot Password?</a></p> -->
+        </div>
+    </div>
+
+    <!-- Optional: Decorative element on the side or background of the auth page -->
+    <!-- <div class="auth-page-decoration"> -->
+    <!-- [Placeholder: Decorative/Illustrative Image for login page - e.g., a vector graphic related to security, access, or abstract tech elements.] -->
+    <!-- <img src="images/login_illustration_placeholder.svg" alt="Login Illustration" class="illustration-placeholder"> -->
+    <!-- </div> -->
+</main>
+
+<footer id="main-footer">
+    <!-- Footer content will be loaded by js/common.js -->
+</footer>
+
+<script src="js/auth.js"></script>
+<script src="js/common.js"></script> <!-- To load header/footer -->
+</body>
+</html>

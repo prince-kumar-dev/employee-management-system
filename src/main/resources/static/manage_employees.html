@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Employees - Admin Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Favicon -->
+</head>
+<body>
+
+<div id="globalLoader" class="loader-overlay" style="display: none;">
+    <div class="loader-spinner"></div>
+    <p class="loader-text">Processing...</p>
+</div>
+
+
+<header id="main-header">
+    <!-- Header content will be loaded by js/common.js -->
+</header>
+
+<main>
+    <div class="dashboard-container container">
+        <div class="page-header-alt">
+            <h1>Manage Employees</h1>
+            <p>Add, view, edit, and delete employee records.</p>
+            <a href="dashboard_admin.html" class="btn btn-outline btn-sm" style="margin-top: 1rem;">← Back to Admin Dashboard</a>
+        </div>
+
+        <section class="form-section card-style">
+            <h2 id="employeeFormTitle">Add New Employee</h2>
+            <form id="employeeForm">
+                <input type="hidden" id="employeeId" name="employeeId">
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="firstName">
+                            <span class="icon-placeholder" title="First Name">👤</span> First Name:
+                        </label>
+                        <input type="text" id="firstName" name="firstName" required placeholder="e.g., Jane">
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">
+                            <span class="icon-placeholder" title="Last Name">👤</span> Last Name:
+                        </label>
+                        <input type="text" id="lastName" name="lastName" required placeholder="e.g., Doe">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">
+                        <span class="icon-placeholder" title="Email">📧</span> Email:
+                    </label>
+                    <input type="email" id="email" name="email" required placeholder="e.g., jane.doe@example.com">
+                </div>
+
+                <div class="form-group">
+                    <label for="password">
+                        <span class="icon-placeholder" title="Password">🔒</span> Password:
+                    </label>
+                    <input type="password" id="password" name="password" placeholder="Set initial password">
+                    <small id="passwordHelp" class="form-text text-muted">Required for new employees. Leave blank if not changing for an existing employee.</small>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="gender">
+                            <span class="icon-placeholder" title="Gender">🚻</span> Gender:
+                        </label>
+                        <select id="gender" name="gender" required>
+                            <option value="" disabled selected>Select Gender</option>
+                            <option value="MALE">Male</option>
+                            <option value="FEMALE">Female</option>
+                            <option value="OTHER">Other</option>
+                            <option value="PREFER_NOT_TO_SAY">Prefer not to say</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="dateOfBirth">
+                            <span class="icon-placeholder" title="Date of Birth">🎂</span> Date of Birth:
+                        </label>
+                        <input type="date" id="dateOfBirth" name="dateOfBirth">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="hireDate">
+                            <span class="icon-placeholder" title="Hire Date">📅</span> Hire Date:
+                        </label>
+                        <input type="date" id="hireDate" name="hireDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="salary">
+                            <span class="icon-placeholder" title="Salary">💰</span> Salary:
+                        </label>
+                        <input type="number" id="salary" name="salary" step="0.01" placeholder="e.g., 50000">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="departmentId">
+                            <span class="icon-placeholder" title="Department">🏢</span> Department:
+                        </label>
+                        <select id="departmentId" name="departmentId" required>
+                            <option value="" disabled selected>Select Department</option>
+                            <!-- Departments populated by JS -->
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="role">
+                            <span class="icon-placeholder" title="Role">👑</span> Role:
+                        </label>
+                        <select id="role" name="role" required>
+                            <option value="EMPLOYEE" selected>Employee</option>
+                            <option value="ADMIN">Admin</option>
+                        </select>
+                        <small class="form-text text-muted">Note: Admins might not typically have salary/department set.</small>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary" id="saveEmployeeBtn">Save Employee</button>
+                    <button type="button" class="btn btn-secondary" id="cancelEmployeeEditBtn" style="display:none;">Cancel Edit</button>
+                </div>
+                <div id="employeeFormMessage" class="message-area" style="display:none;"></div>
+            </form>
+        </section>
+
+        <!-- Employees List Section (remains the same) -->
+        <section class="data-list-section card-style">
+            <h2>Current Employees</h2>
+            <div class="filter-controls" style="margin-bottom: 1rem; display: flex; gap: 1rem; align-items: center;">
+                <label for="departmentFilter" style="margin-bottom:0;">
+                    <span class="icon-placeholder" title="Filter">⚖️</span> Filter by Department:
+                </label>
+                <select id="departmentFilter" name="departmentFilter" style="padding: 0.5em; border-radius: 4px;">
+                    <option value="">All Departments</option>
+                    <!-- Departments populated by JS -->
+                </select>
+            </div>
+            <div id="employeeListContainer">
+                <p id="loadingEmployeesMsg">Loading employees...</p>
+                <table id="employeesTable" class="data-table" style="display:none;">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Department</th>
+                        <th>Role</th>
+                        <th>Gender</th> <!-- Added Gender Column to Table -->
+                        <th>Hire Date</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody id="employeesTableBody">
+                    <!-- Employee rows will be populated by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+            <div id="employeeListMessage" class="message-area" style="display:none;"></div>
+        </section>
+    </div>
+</main>
+
+<footer id="main-footer">
+    <!-- Footer content will be loaded by js/common.js -->
+</footer>
+
+<script src="js/common.js"></script>
+<script src="js/manage_employees.js"></script>
+</body>
+</html>
